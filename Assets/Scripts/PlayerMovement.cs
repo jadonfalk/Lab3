@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
 
         float horizontal = 0f;
 
-#if ENABLE_INPUT_SYSTEM
         Keyboard keyboard = Keyboard.current;
 
         if (keyboard != null)
@@ -36,13 +35,6 @@ public class PlayerMovement : MonoBehaviour
             if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
                 horizontal += 1f;
         }
-#else
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            horizontal -= 1f;
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            horizontal += 1f;
-#endif
 
         // Change only X, preserving the player's Y and Z.
         Vector3 position = transform.position;
